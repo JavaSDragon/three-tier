@@ -1,0 +1,43 @@
+<form class="user-form" [formGroup]="userForm" (ngSubmit)="reg()" *ngIf="!AuthService.logIn">
+  <h1>Registration</h1>
+  <div>
+    <div class="user-form__form-group">
+      <label for="regLogin" *ngIf="!AuthService.logIn">User Name:</label>
+      <input type="text" class="user-input" id="regLogin" placeholder="Enter name" formControlName="name"
+        *ngIf="!AuthService.logIn">
+    </div>
+    <div class="user-form__form-control" *ngIf="submitted && form.name.errors">
+      <div *ngIf="submitted && form.name.errors.required">
+        <p>Enter your name please</p>
+      </div>
+      <div *ngIf="submitted && form.name.errors.pattern">
+        <p>login name can only be english</p>
+      </div>
+    </div>
+    <div class="user-form__form-group">
+      <label for="regPassword" *ngIf="!AuthService.logIn">Password:</label>
+      <input type="password" class="user-input" id="regPassword" placeholder="Enter password" formControlName="password"
+        *ngIf="!AuthService.logIn">
+    </div>
+    <div class="user-form__form-control" *ngIf="submitted && form.password.errors">
+      <div *ngIf="submitted && form.password.errors.required">
+        <p>Enter your password please</p>
+      </div>
+      <div *ngIf="submitted && form.password.errors.minlength">
+        <p>The minimum password length is 3 characters</p>
+      </div>
+      <div *ngIf="submitted && form.password.errors.pattern">
+        <p>Password can only be numbers or english</p>
+      </div>
+    </div>
+  </div>
+  <div class="user-form__form-control" *ngIf="!AuthService.logIn && !form.password.errors">
+    <div *ngIf="regErr">
+      <p>This user name is already existed</p>
+    </div>
+  </div>
+  <br>
+  <button id="regLogBtn" class="logBtn" *ngIf="!AuthService.logIn">Registration</button>
+</form>
+
+<h1 *ngIf="AuthService.logIn" class="atten">you are registered</h1>

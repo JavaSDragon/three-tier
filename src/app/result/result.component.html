@@ -1,0 +1,7 @@
+<div *ngFor="let res of listing" class="tasks__result">
+    <p class="tasks__result__comment">{{res.comment}}</p>
+    <p class="tasks__result__name">{{res.name}}</p>
+</div>
+
+<textarea class="add" cols="30" rows="10" [(ngModel)]="userInput" *ngIf="AuthService.logIn"></textarea>
+<button class="addBtn" (click)="addTask()" *ngIf="AuthService.logIn">Add Comment</button>

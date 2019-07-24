@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin           : 0;
+  background-image : url("./assets/img/book.png");
+  background-repeat: no-repeat;
+  background-size  : cover;
+}
+
+.header {
+  background     : gray;
+  display        : flex;
+  justify-content: space-between;
+
+  &__user-form {
+    text-align: right;
+
+    &__userName {
+      font-family : 'HelveticaNeue', Helvetica, Arial, sans-serif;
+      margin-right: 50px;
+      color       : yellowgreen;
+      font-size   : 36px;
+    }
+
+    &__logout-btn {
+      color          : #fff;
+      text-decoration: none;
+      user-select    : none;
+      background     : rgb(212, 75, 56);
+      padding        : .7em 1.5em;
+      outline        : none;
+
+      &:hover {
+        background: rgb(232, 95, 76);
+      }
+
+      &:active {
+        background: rgb(152, 15, 0);
+      }
+    }
+  }
+
+  &__logBtn {
+    float: right;
+  }
+}
+
+
+.tasks {
+  text-align: center;
+
+  &__result {
+    
+    width     : 400px;
+    margin    : 0 auto;
+    text-align: center;
+
+    &__comment {
+      font-family : 'HelveticaNeue', Helvetica, Arial, sans-serif;
+      font-size   : 22px;
+      vertical-align: middle;
+      color: rgb(0, 94, 94);
+      word-wrap: break-word;
+      height: 200px;
+      border       : 2px solid black;
+      margin-bottom: 0;
+    }
+
+    &__name {
+      font-family : 'HelveticaNeue', Helvetica, Arial, sans-serif;
+      font-size   : 36px;
+      color: yellow;
+      text-align : right;
+      margin-top : 0px;
+      margin-left: 0px;
+    }
+  }
+}
+
+.user-form {
+  &__form-control p {
+    color : red;
+    margin: 0px;
+  }
+}
+
+.logBtn {
+  width          : 150px;
+  font-weight    : 700;
+  color          : white;
+  text-decoration: none;
+  padding        : .8em 1em calc(.8em + 3px);
+  border-radius  : 3px;
+  background     : rgb(64, 199, 129);
+  box-shadow     : 0 -3px rgb(53, 167, 110) inset;
+  transition     : 0.2s;
+  float          : right;
+
+  &:hover {
+    background: rgb(53, 167, 110);
+  }
+
+  &:active {
+    background: rgb(33, 147, 90);
+    box-shadow: 0 3px rgb(33, 147, 90) inset;
+  }
+}
+
+.user-input {
+  width        : 150px;
+  height       : 20px;
+  border-radius: 10px;
+  border       : solid green 2px;
+
+  &.ng-touched.ng-invalid {
+    border: solid red 2px;
+  }
+}

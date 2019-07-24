@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="header">
+  <img src="https://cdn1.savepice.ru/uploads/2019/7/24/ce45818f2eb3c4d1166ea312d6108c11-full.png" alt="logo" (click)=goBack()>
+  <div>
+    <form class="header__user-form" [formGroup]="userForm" (ngSubmit)="logIn()">
+      <div class="user-form__form-group">
+        <label for="login" *ngIf="!AuthService.logIn">User Name:</label>
+        <input type="text" id="login" class="user-input" placeholder="Enter name" formControlName="name"
+          *ngIf="!AuthService.logIn">
+      </div>
+      <div class="user-form__form-control" *ngIf="submitted && form.name.errors">
+        <div *ngIf="submitted && form.name.errors.required">
+          <p>Enter your name please</p>
+        </div>
+        <div *ngIf="submitted && form.name.errors.pattern">
+          <p>login name can only be english</p>
+        </div>
+      </div>
+      <div class="header__user-form__form-group">
+        <label for="pass" *ngIf="!AuthService.logIn">Password:</label>
+        <input type="password" id="pass" class="user-input" placeholder="Enter password" formControlName="password"
+          *ngIf="!AuthService.logIn">
+      </div>
+      <div class="user-form__form-control" *ngIf="submitted && form.password.errors">
+        <div *ngIf="submitted && form.password.errors.required">
+          <p>Enter your password please</p>
+        </div>
+        <div *ngIf="submitted && form.password.errors.minlength">
+          <p>The minimum password length is 3 characters</p>
+        </div>
+        <div *ngIf="submitted && form.password.errors.pattern">
+          <p>Password can only be numbers or english</p>
+        </div>
+      </div>
+      <div class="user-form__form-control" *ngIf="!AuthService.logIn && !userForm.invalid">
+        <div *ngIf="loginErr">
+          <p>The username or the password is incorrect</p>
+        </div>
+      </div>
+      <button class="logBtn" *ngIf="!AuthService.logIn">Login</button>
+    </form>
+    <div>
+      <button type="submit" class="logBtn" (click)="reg()" *ngIf="!AuthService.logIn">registration</button>
+    </div>
+    <h1 class="header__user-form__userName" *ngIf="AuthService.logIn">Hello {{this.userName}}!</h1>
+    <button type="submit" class="header__user-form__logout-btn" (click)="logOut()"
+      *ngIf="AuthService.logIn">Logout</button>
+  </div>
+</div>
+<router-outlet></router-outlet>
