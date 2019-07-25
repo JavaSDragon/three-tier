@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken');
+var cors = require('cors');
 
 
 // const pg = require('pg');
@@ -16,6 +17,9 @@ const pool = new Pool({
 
 // DECLARE JWT-secret
 const JWT_Secret = 'key';
+
+
+router.use(cors());
 
 /* GET home page. */
 router.get('/api/homeBook', (req, res) => {
@@ -35,7 +39,6 @@ router.get('/api/homeBook', (req, res) => {
 
 router.post('/api/addRecords', (req, res) => {
   var user = req.body;
-
   pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error acquiring client', err.stack)
@@ -52,7 +55,6 @@ router.post('/api/addRecords', (req, res) => {
 
 router.post('/api/registration', (req, res) => {
   var user = req.body;
-
   pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error acquiring client', err.stack);
@@ -76,7 +78,6 @@ router.post('/api/registration', (req, res) => {
 
 router.post('/api/authorization', (req, res) => {
   var user = req.body;
-
   pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error acquiring client', err.stack)
